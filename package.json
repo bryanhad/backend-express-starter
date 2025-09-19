@@ -1,6 +1,6 @@
 {
    "name": "express-drizzle-sqlite-starter",
-   "version": "0.0.6",
+   "version": "0.0.2",
    "description": "a started kit for express app using drizzle-sqlite",
    "main": "index.js",
    "scripts": {

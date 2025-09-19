@@ -1,3 +1,4 @@
+import { HttpError } from "@/utils/error.util";
 import { NextFunction, Request, Response } from "express";
 import { ZodError } from "zod";
 
@@ -7,9 +8,7 @@ export function errorHandler(
    res: Response,
    _next: NextFunction,
 ) {
-   console.error({ err });
-
-   // Handle Zod validation errors nicely
+   // Handle Zod validation errors
    if (err instanceof ZodError) {
       return res.status(400).json({
          message: "Bad Request",
@@ -20,13 +19,14 @@ export function errorHandler(
       });
    }
 
-   // Handle known errors (custom app errors)
-   if (err instanceof Error) {
-      return res.status(500).json({
+   // Handle thrown HttpError
+   if (err instanceof HttpError) {
+      return res.status(err.statusCode).json({
          message: err.message,
       });
    }
 
-   // Fallback
+   // Handle unknown errors
+   console.error("[UNEXPECTED ERROR]", err);
    res.status(500).json({ message: "Internal Server Error" });
 }

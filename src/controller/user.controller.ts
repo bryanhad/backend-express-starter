@@ -1,5 +1,6 @@
 import { UserService } from "@/services/user.service";
 import { createApiHandler } from "@/utils/api.util";
+import { NotFoundError } from "@/utils/error.util";
 import {
    createUserRequestSchema,
    getUserByIdRequestSchema,
@@ -16,6 +17,9 @@ export class UserController {
    public static readonly getUserById = createApiHandler<typeof getUserByIdRequestSchema>(
       async (req) => {
          const user = await UserService.getUserById(req.params.userId);
+         if (!user) {
+            throw new NotFoundError()
+         }
          return { data: user };
       },
    );

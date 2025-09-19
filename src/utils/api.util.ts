@@ -2,12 +2,8 @@ import {
    TRequestValidationSchema,
    ValidatedRequest,
 } from "@/interfaces/request.interface";
+import { ApiResponse } from "@/interfaces/response.interface";
 import { NextFunction, Response } from "express";
-
-type ApiResponse<TRes = unknown> = {
-   message?: string;
-   data?: TRes;
-};
 
 /**
  * Represents an async controller function.
@@ -43,7 +39,10 @@ export function createApiHandler<
    return async (req, res, next) => {
       try {
          const { message, data } = await fn(req);
-         res.status(200).json({ message: message ?? "OK", data: data ?? null });
+         res.status(200).json({
+            message: message ?? "OK",
+            ...(data ? { data } : {}),
+         });
       } catch (err) {
          next(err);
       }
