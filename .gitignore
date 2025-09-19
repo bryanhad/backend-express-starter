@@ -3,6 +3,5 @@ dist
 .env*
 !.env.example
 public
-sqlite.*
-
+data/
 drizzle/
