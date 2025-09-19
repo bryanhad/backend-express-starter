@@ -4,4 +4,5 @@ describe shortly about your app!
 
 ## Changelog
 
-- [24-12-2000] 0.0.0 init
+- [17-09-2025] 0.0.0 init
+- [19-09-2025] 0.0.1 add createApiHandler util

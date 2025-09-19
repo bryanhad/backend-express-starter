@@ -1,14 +1,12 @@
 import { usersTable } from "@db/schema";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
-import { requestSchema } from "./request.validation";
+import { baseRequestSchema } from "./request.validation";
 
-export const createUserRequestSchema = requestSchema.safeExtend({
+export const createUserRequestSchema = baseRequestSchema.extend({
    body: createInsertSchema(usersTable),
 });
-export const getUserByIdRequestSchema = requestSchema.safeExtend({
+
+export const getUserByIdRequestSchema = baseRequestSchema.extend({
    params: z.object({ userId: z.coerce.number() }),
 });
-
-export type CreateUserRequestBody = z.infer<typeof createUserRequestSchema>["body"];
-export type GetUserByIdRequestParams = z.infer<typeof getUserByIdRequestSchema>["params"];

@@ -1,10 +1,38 @@
-import { RequestHandler } from "express";
+import { Request, RequestHandler } from "express";
+import { z } from "zod";
 
-export type BaseResponseBody<T = unknown> = { data: T; message: string };
+/**
+ * Base Zod schema contract for request validation.
+ * Requires `params`, `body`, and `query` keys.
+ */
+export type TRequestValidationSchema = z.ZodObject<{
+   params: z.ZodTypeAny;
+   body: z.ZodTypeAny;
+   query: z.ZodTypeAny;
+}>;
 
-type DefaultPathParams = Record<string, string>;
+/**
+ * Express RequestHandler type that enforces validated input
+ * according to the given schema.
+ *
+ * Useful for typing controller methods.
+ */
+export type ValidatedRequestHandler<T extends TRequestValidationSchema> = RequestHandler<
+   z.infer<T>["params"],
+   unknown,
+   z.infer<T>["body"],
+   z.infer<T>["query"]
+>;
 
-export type BaseRequestHandler<
-   PathParams = DefaultPathParams,
-   ReqBody = unknown,
-> = RequestHandler<PathParams, BaseResponseBody, ReqBody>;
+/**
+ * Express Request type that is strongly typed
+ * using the given validation schema.
+ *
+ * - `params`, `body`, and `query` are inferred from the schema
+ */
+export type ValidatedRequest<T extends TRequestValidationSchema> = Request<
+   z.infer<T>["params"],
+   unknown,
+   z.infer<T>["body"],
+   z.infer<T>["query"]
+>;

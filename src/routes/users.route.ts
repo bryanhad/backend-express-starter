@@ -8,12 +8,15 @@ import { Router } from "express";
 
 const usersRouter: Router = Router();
 
+// GET endpoints
+usersRouter.get("/", UserController.getUsers);
 usersRouter.get(
    "/:userId",
    validateRequest(getUserByIdRequestSchema),
    UserController.getUserById,
 );
-usersRouter.get("/", UserController.getUsers);
+
+// POST endpoints
 usersRouter.post(
    "/",
    validateRequest(createUserRequestSchema),
