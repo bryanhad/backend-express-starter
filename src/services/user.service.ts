@@ -1,5 +1,6 @@
 import { db } from "@/db";
-import { User, usersTable } from "@/db/schema";
+import { usersTable } from "@/db/schema";
+import { User } from "@/interfaces/user.interface";
 import { createUserRequestSchema } from "@/validation/user.validation";
 import { sql } from "drizzle-orm";
 import { z } from "zod";

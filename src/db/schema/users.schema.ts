@@ -1,4 +1,4 @@
-import { InferSelectModel, relations } from "drizzle-orm";
+import { relations } from "drizzle-orm";
 import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { blogsTable } from "./blogs.schema";
 import { commentsTable } from "./comments.schema";
@@ -14,5 +14,3 @@ export const usersRelations = relations(usersTable, ({ many }) => ({
    blogs: many(blogsTable),
    comments: many(commentsTable),
 }));
-
-export type User = InferSelectModel<typeof usersTable>;

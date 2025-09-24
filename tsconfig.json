@@ -8,10 +8,7 @@
       "outDir": "./dist",
       "baseUrl": ".",
       "paths": {
-         "@/*": ["./src/*"],
-         "@db/*": ["src/db/*"],
-         "@interfaces/*": ["src/interfaces/*"],
-         "@utils/*": ["src/utils/*"]
+         "@/*": ["./src/*"]
       },
 
       // Environment Settings

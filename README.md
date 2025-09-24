@@ -4,6 +4,7 @@ describe shortly about your app!
 
 ## Changelog
 
+- [24-09-2025] 0.0.6 remove nodemon & other minor changes
 - [24-09-2025] 0.0.5 add db scripts
 - [24-09-2025] 0.0.4 handle EADDRINUSE & add env getter util
 - [20-09-2025] 0.0.3 configure docker stuff (need rework)
