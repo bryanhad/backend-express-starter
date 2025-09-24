@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { env } from "./src/utils/env.util";
 import { defineConfig } from "drizzle-kit";
 
 export default defineConfig({
@@ -6,6 +7,6 @@ export default defineConfig({
    schema: "./src/db/schema/index.ts",
    dialect: "sqlite",
    dbCredentials: {
-      url: process.env.DB_FILE_PATH!,
+      url: env.DB_FILE_PATH,
    },
 });

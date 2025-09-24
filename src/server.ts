@@ -4,15 +4,16 @@ if (process.env.NODE_ENV !== "production") {
 }
 import http from "http";
 import app from "./app";
-import { shutdown } from "./utils/server.util";
-
-const PORT = process.env.PORT || 5000;
+import { handleHttpServerError, shutdown } from "./utils/server.util";
+import { env } from "./utils/env.util";
 
 const server = http.createServer(app);
 
 process.on("SIGINT", () => shutdown(server, "SIGINT"));
 process.on("SIGTERM", () => shutdown(server, "SIGTERM"));
 
-server.listen(PORT, () => {
-   console.log(`Server is running on http://localhost:${PORT}`);
+server.on("error", handleHttpServerError);
+
+server.listen(env.PORT, () => {
+   console.log(`Server is running on http://localhost:${env.PORT}`);
 });
