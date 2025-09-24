@@ -3,7 +3,7 @@ import { z } from "zod";
 const envSchema = z.object({
    NODE_ENV: z.string().optional(),
    PORT: z.coerce.number(),
-   DB_FILE_PATH: z.string(),
+   DB_FILE_NAME: z.string().transform((fileName) => `data/${fileName}`),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
