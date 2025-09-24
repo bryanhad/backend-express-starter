@@ -1,10 +1,13 @@
 {
    "name": "express-drizzle-sqlite-starter",
-   "version": "0.0.4",
+   "version": "0.0.5",
    "description": "a started kit for express app using drizzle-sqlite",
    "main": "index.js",
    "scripts": {
       "fix": "eslint src --ext .ts,.tsx --fix && prettier --write .",
+      "db:generate": "drizzle-kit generate",
+      "db:migrate": "mkdir -p data && drizzle-kit migrate && echo \"\n\"",
+      "db:studio": "drizzle-kit studio",
       "start": "node dist/server.js",
       "dev": "tsnd --respawn --transpile-only -r tsconfig-paths/register src/server.ts",
       "build": "bash scripts/build.sh",
