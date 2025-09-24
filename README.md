@@ -22,9 +22,12 @@ pnpm db:generate
 # Run database migrations
 pnpm db:migrate
 
+# Interact with database
+pnpm db:studio
+
 # Start development server
 pnpm dev
 ```
 
-Visit http://localhost:*PORT_FROM_DOT_ENV*
+Visit http://localhost:_PORT_FROM_DOT_ENV_
 after starting the server.
