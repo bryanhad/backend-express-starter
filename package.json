@@ -1,8 +1,8 @@
 {
-   "name": "express-drizzle-sqlite-starter",
-   "version": "0.0.6",
-   "description": "a started kit for express app using drizzle-sqlite",
-   "main": "index.js",
+   "name": "backend-express-starter",
+   "version": "0.0.0",
+   "description": "Backend starter kit with Express, Drizzle ORM, and SQLite.",
+   "main": "dist/server.js",
    "scripts": {
       "fix": "eslint src --ext .ts,.tsx --fix && prettier --write .",
       "db:generate": "drizzle-kit generate",

@@ -1,13 +1,30 @@
-# Oinkie
+# Backend Express Starter
 
-describe shortly about your app!
+🚀 A lightweight backend starter kit using Express, Drizzle ORM, and SQLite.
+Perfect for prototyping APIs or building small backend services with TypeScript and modern tooling.
 
-## Changelog
+## Features
 
-- [24-09-2025] 0.0.6 remove nodemon & other minor changes
-- [24-09-2025] 0.0.5 add db scripts
-- [24-09-2025] 0.0.4 handle EADDRINUSE & add env getter util
-- [20-09-2025] 0.0.3 configure docker stuff (need rework)
-- [19-09-2025] 0.0.2 add HttpError class
-- [19-09-2025] 0.0.1 add createApiHandler util
-- [17-09-2025] 0.0.0 init
+- **Express** – backend routing
+- **Drizzle ORM + SQLite** – simple, type-safe database stack
+- **Zod** - schema validation
+- **TypeScript, ESLint, Prettier, and hot-reload dev setup**
+
+## Getting Started
+
+```sh
+# Install dependencies
+pnpm install
+
+# Generate SQL migrations
+pnpm db:generate
+
+# Run database migrations
+pnpm db:migrate
+
+# Start development server
+pnpm dev
+```
+
+Visit http://localhost:*PORT_FROM_DOT_ENV*
+after starting the server.
